@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iconsfinder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,600;0,800;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/f838dd108d.js" crossorigin="anonymous"></script>
+  </head>
 </head>
 <body>
+<nav  class="mainNav">
+    <div class="mainNav__logo">Iconsfinder</div>
+
+    <ul class="mainNav__list">
+        <li class="mainNav__list__item">Home</li>
+        <li class="mainNav__list__item">Favourites</li>
+        <li class="mainNav__list__item">Random</li>
+    </ul>
+    <div class="burger">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+</nav>
+    <section class="search">
+    <div class="mainForm">
+        <h1 class="mainForm__header">Search icon:</h1>
+        <input type="text" placeholder="Find Icon" class="iconValue">
+        <input type="number" placeholder="How many?" class="numberOfIcons">
+        <button class="mainForm__button" value="Search">Search</button>
+    </div>
+    </section>
+    <section class="mainContent">
+    <div class="mainContent__wrapper">
+        <div class="mainContent__header"> <i class="fas fa-arrow-left wrapperArrow"></i>You look for: </div>
+        <div class="mainContent__icons">wqeweq</div>
+    </div>
 
 
-    <form><label>Podaj ilość ikon
-        <input type="number" class="numberOfIcons"></label>
-        <input type="text" class="iconValue">
-    </form>
+
+    </section>
+    <div class="content"></div>
 
 
 
@@ -19,8 +49,6 @@
 
 
 
-
-
- <script src="js/main.js"></script> 
+<script src="js/main.js"></script> 
 </body>
 </html>

@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Nunito Sans', sans-serif;
+}
+// NAVIGATION
+.mainNav{
+    position: fixed;
+    display: flex;
+    min-height: 8vh;
+    width: 100%;
+    justify-content: space-around;
+    align-items:center;
+    z-index:15;
+
+}
+.mainNav__logo{
+    font-family: 'Pacifico', cursive;
+    width: 50%;
+    align-self: center;
+    font-size: 3.5rem;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+.mainNav__list{
+    display: flex;
+    width: 70%;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+.mainNav__list__item{
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    transition: border-bottom 1s ease-in;
+}
+
+.mainNav__list__item::after{
+    content: "";
+    display: block;
+     margin: auto;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    transition: width .3s ease, background-color .3s ease;
+}
+.mainNav__list__item:hover:after {
+    width: 100%;
+    background: black;
+  }
+nav a{
+    color:black;
+    text-decoration: none;
+}
+.burger{
+    display:none;
+}
+.burger div{
+    display: block;
+    background-color: black;
+    margin: 5px;
+    margin-top: 30px;
+}
+@media screen and (max-width:768px){
+    body{
+        overflow-x: hidden;
+    }
+    .mainNav__logo{
+        width:100%;
+        font-size:2.9rem
+    }
+    .mainNav__list{
+        position: absolute;
+        right :0px;
+        height: 92vh;
+        top:8vh;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 1;
+        background-color:white;
+    }
+    .mainNav__list__item{
+        font-size:1.3em;
+    }
+    .burger{
+        display: block;
+        cursor: pointer;
+        font-size: 1em;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        margin-top: 60px;
+        z-index: 1;
+    }
+    .fas{
+        font-size: 2em;
+        transition: transform 0.4s linear;
+    }
+
+}
+.nav-active{
+    transform: translateX(0);
+    margin-top: 20pxx;
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+  
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.toggle .fas{
+    transform: rotate(180deg) ;
+}
