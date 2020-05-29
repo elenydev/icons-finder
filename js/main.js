@@ -69,7 +69,9 @@ async function searchIconsValues() {
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${iconValue}`;
         for(let i=0; i<=numberOfIcons; i++){
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
-            document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main"><img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a> <span class="star"><i class="fas fa-star"></span></i></div>`
+            document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
+            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
+            <span class="star" onclick="setLocalStorage()"><i class="fas fa-star"></span></i></div>`
         }
     }
     catch(err){
@@ -103,6 +105,9 @@ async function searchRandomIcons(arrs){
 }
 //MAKING RANDOM CONTENT
 async function searchRandomIconsValues(){
+    setTimeout(function(){
+        document.querySelector('.mainNav__list').classList.remove('nav-active');
+    },2000);
     document.querySelector('.mainContent__icons').innerHTML=""
     let randomNumber=Math.floor(Math.random()*(9-0)+0);
     const arr=['arrow','sun','sky','smile','dark','eye','dot','dog','cat','cow']
@@ -115,16 +120,22 @@ async function searchRandomIconsValues(){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${arrRandom}`;
         for(let i=0; i<=60; i++){
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
-            document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main"><img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a> <span class="star"><i class="fas fa-star"></span></i></div>`
+            document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
+            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
+             <span class="star" onclick="setLocalStorage()"><i class="fas fa-star"></span></i></div>`
         }
     }
     catch(err){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${arrRandom}`;
         console.log(err);
     }
+    document.querySelector('.star').addEventListener('click', setLocalStorage(e));
 }
-function setLocalStorage(){
 
+function setLocalStorage(e){
+    const target=e.target;
+    const item=target.parentElement;
+    console.log(item)
 }
 ///event Listeners
 random.addEventListener('click', searchRandomIconsValues);

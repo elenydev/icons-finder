@@ -95,7 +95,7 @@ nav a {
   margin-top: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 824px) {
   .mainNav__logo {
     width: 100%;
     font-size: 2.9rem;
@@ -271,7 +271,7 @@ nav a {
   color: red;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 824px) {
   .search {
     width: 50%;
   }
@@ -420,12 +420,107 @@ nav a {
   height: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 824px) {
   .icon-main a {
     font-size: 0.7em;
   }
   .icon-main .star {
     font-size: 0.7em;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 824px) {
+  .mainContent .wrapperArrow {
+    top: 20%;
+  }
+  .mainContent__header {
+    margin-top: 16px;
+  }
+}
+
+.favouritesContent {
+  display: block;
+  min-height: 80vh;
+  width: 90%;
+  position: absolute;
+  top: 20%;
+  left: -50%;
+  border: 2px solid black;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  background-color: white;
+  z-index: 2;
+  -webkit-transition: .4s ease-in;
+  transition: .4s ease-in;
+}
+
+.favourites__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+}
+
+.favourites__header {
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  font-size: 2em;
+  padding: 10px;
+  font-family: 'Pacifico', cursive;
+  z-index: 16;
+  margin-top: 10px;
+}
+
+.favourites .wrapperArrow {
+  position: absolute;
+  top: 2%;
+  left: 1%;
+  font-size: 1em;
+  cursor: pointer;
+  z-index: 16;
+  color: black;
+}
+
+.favourites__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-height: 80%;
+  width: 100%;
+  padding: 20px;
+}
+
+@media screen and (max-width: 824px) {
+  .icon-main a {
+    font-size: 0.7em;
+  }
+  .icon-main .star {
+    font-size: 0.7em;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 824px) {
+  .favouritesContent .wrapperArrow {
+    top: 20%;
+  }
+  .favourites__header {
+    margin-top: 16px;
   }
 }
 /*# sourceMappingURL=style.css.map */

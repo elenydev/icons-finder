@@ -8,7 +8,6 @@
     transform: translate(-50%, 0%);
     background-color: white;
     z-index: 2;
-
     transition: .4s ease-in;
 }
 .mainContent__wrapper{
@@ -108,7 +107,7 @@
     width: 100%;
     height: 100%;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 824px){
     .icon-main a {
         font-size: 0.7em;
     }
@@ -116,4 +115,12 @@
         font-size: 0.7em;
     }
 
+}
+@media (orientation:landscape)and (max-width: 824px){
+    .mainContent .wrapperArrow{
+        top: 20%;
+    }
+    .mainContent__header{
+        margin-top: 16px;
+    }
 }
