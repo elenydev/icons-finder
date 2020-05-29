@@ -14,6 +14,7 @@
 .mainForm__header{
     font-size: 5em;
     font-family: 'Pacifico', cursive;;
+    text-align: center;
 }
 .mainForm .iconValue{
     outline: 0;
@@ -62,6 +63,13 @@
 .mainForm__button:hover{
     background-color: #fff;
     color:black;
+}
+.wrongValues{
+    border-bottom: 2px solid red;
+}
+.h3Alert{
+    display:none;
+    color:red;
 }
 @media screen and (max-width:768px){
     .search{

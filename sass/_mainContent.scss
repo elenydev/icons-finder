@@ -2,13 +2,13 @@
     display: block;
     min-height: 80vh;
     width: 90%;
-    position: fixed;
+    position: absolute;
     top: 20%;
     left: -100%;
     transform: translate(-50%, 0%);
     background-color: white;
     z-index: 2;
-    border:1px solid black;
+
     transition: .4s ease-in;
 }
 .mainContent__wrapper{
@@ -25,28 +25,95 @@
     font-size: 2em;
     padding: 10px;
     font-family: 'Pacifico', cursive;
+    z-index: 16;
+    margin-top: 10px;
 
 }
 .mainContent .wrapperArrow{
     position: absolute;
-    top: 0%;
+    top: 2%;
     left: 1%;
-    display: block;
     font-size: 1em ;
     cursor: pointer;;
+    z-index: 16;
+    color:black;
 
 }
 .mainContent__icons{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    height: 80%;
+    justify-content: space-around ;
+    min-height: 80%;
     width: 100%;
-   padding:20px;
+    padding:20px;
 }
-.icon-main{
+.icon-main {
     display: block;
-    width: 50px;
-    height: 50px;
+    height: 70px;
+    width: 70px;
+    margin: 3px;
+    position: relative;
+    transition: 0.25s linear;
+    margin: 3px;
+}
+
+.icon-main a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0%;
+    left: 10%;
+    font-size: 1.2em;
+    transform: translate(-10%, 50%);
+    display: none;
+
+}
+.icon-main .star{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0%;
+    right: 10%;
+    font-size: 1.2em;
+    transform: translate(10%, 50%);
+    cursor: pointer;
+    display: none;
+
+}
+.icon-main img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    margin: 2px;
+    position: relative;
+}
+.icon-main:hover{
+    background-color: darkgray;
+    transform: scale(1.08);
+    border-radius:10px}
+.icon-main:hover a{
+    display: block;
+    color: blue;}
+.icon-main:hover .star{
+    display: block;
+    color: gold;
+    }
+.deleteResult{
+    width: 100%;
+    height: 100%;
+}
+@media screen and (max-width: 768px){
+    .icon-main a {
+        font-size: 0.7em;
+    }
+    .icon-main .star{
+        font-size: 0.7em;
+    }
+
 }

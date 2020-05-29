@@ -5,6 +5,7 @@
 }
 body{
     font-family: 'Nunito Sans', sans-serif;
+    min-height: 100vh;
 }
 // NAVIGATION
 .mainNav{
@@ -15,6 +16,7 @@ body{
     justify-content: space-around;
     align-items:center;
     z-index:15;
+    background-color: #fff;
 
 }
 .mainNav__logo{
@@ -70,9 +72,6 @@ nav a{
     margin-top: 30px;
 }
 @media screen and (max-width:768px){
-    body{
-        overflow-x: hidden;
-    }
     .mainNav__logo{
         width:100%;
         font-size:2.9rem

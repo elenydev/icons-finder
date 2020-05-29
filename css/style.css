@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Nunito Sans', sans-serif;
+  min-height: 100vh;
 }
 
 .mainNav {
@@ -22,6 +23,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   z-index: 15;
+  background-color: #fff;
 }
 
 .mainNav__logo {
@@ -94,9 +96,6 @@ nav a {
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
   .mainNav__logo {
     width: 100%;
     font-size: 2.9rem;
@@ -205,6 +204,7 @@ nav a {
 .mainForm__header {
   font-size: 5em;
   font-family: 'Pacifico', cursive;
+  text-align: center;
 }
 
 .mainForm .iconValue {
@@ -262,6 +262,15 @@ nav a {
   color: black;
 }
 
+.wrongValues {
+  border-bottom: 2px solid red;
+}
+
+.h3Alert {
+  display: none;
+  color: red;
+}
+
 @media screen and (max-width: 768px) {
   .search {
     width: 50%;
@@ -276,14 +285,13 @@ nav a {
   display: block;
   min-height: 80vh;
   width: 90%;
-  position: fixed;
+  position: absolute;
   top: 20%;
   left: -100%;
   -webkit-transform: translate(-50%, 0%);
           transform: translate(-50%, 0%);
   background-color: white;
   z-index: 2;
-  border: 1px solid black;
   -webkit-transition: .4s ease-in;
   transition: .4s ease-in;
 }
@@ -310,15 +318,18 @@ nav a {
   font-size: 2em;
   padding: 10px;
   font-family: 'Pacifico', cursive;
+  z-index: 16;
+  margin-top: 10px;
 }
 
 .mainContent .wrapperArrow {
   position: absolute;
-  top: 0%;
+  top: 2%;
   left: 1%;
-  display: block;
   font-size: 1em;
   cursor: pointer;
+  z-index: 16;
+  color: black;
 }
 
 .mainContent__icons {
@@ -330,17 +341,91 @@ nav a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 80%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-height: 80%;
   width: 100%;
   padding: 20px;
 }
 
 .icon-main {
   display: block;
-  width: 50px;
-  height: 50px;
+  height: 70px;
+  width: 70px;
+  margin: 3px;
+  position: relative;
+  -webkit-transition: 0.25s linear;
+  transition: 0.25s linear;
+  margin: 3px;
+}
+
+.icon-main a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  font-size: 1.2em;
+  -webkit-transform: translate(-10%, 50%);
+          transform: translate(-10%, 50%);
+  display: none;
+}
+
+.icon-main .star {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0%;
+  right: 10%;
+  font-size: 1.2em;
+  -webkit-transform: translate(10%, 50%);
+          transform: translate(10%, 50%);
+  cursor: pointer;
+  display: none;
+}
+
+.icon-main img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  position: relative;
+}
+
+.icon-main:hover {
+  background-color: darkgray;
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+  border-radius: 10px;
+}
+
+.icon-main:hover a {
+  display: block;
+  color: blue;
+}
+
+.icon-main:hover .star {
+  display: block;
+  color: gold;
+}
+
+.deleteResult {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .icon-main a {
+    font-size: 0.7em;
+  }
+  .icon-main .star {
+    font-size: 0.7em;
+  }
 }
 /*# sourceMappingURL=style.css.map */
