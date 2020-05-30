@@ -70,7 +70,7 @@ async function searchIconsValues() {
         for(let i=0; i<=numberOfIcons; i++){
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
             document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
-            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
+            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="https://www.iconfinder.com/icons/data.icons[i].icon_id/free_bsd_freebsd_icon" target="_blank"><i class="fas fa-save"></i></a>
             <span class="star"><i class="fas fa-star"></span></i></div>`
         }
     }
@@ -128,7 +128,7 @@ async function searchRandomIconsValues(){
         for(let i=0; i<=60; i++){
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
             document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
-            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
+            <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="https://www.iconfinder.com/icons/data.icons[i].icon_id/free_bsd_freebsd_icon" target="_blank"><i class="fas fa-save"></i></a>
              <span class="star"><i class="fas fa-star"></span></i></div>`
         }
     }
