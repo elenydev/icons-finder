@@ -64,6 +64,7 @@ nav a{
 }
 .burger{
     display:none;
+    transition: transform 0.4s linear;
 }
 .burger div{
     display: block;

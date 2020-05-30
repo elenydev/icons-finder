@@ -5,7 +5,7 @@
     position: absolute;
     top: 20%;
     left: -50%;
-    border: 2px solid black;
+
     transform: translate(-50%, 0%);
     background-color: white;
     z-index: 2;
@@ -29,7 +29,16 @@
     margin-top: 10px;
 
 }
-.favourites .wrapperArrow{
+.favourites-icon {
+    display: block;
+    height: 70px;
+    width: 70px;
+    margin: 3px;
+    position: relative;
+    transition: 0.25s linear;
+    margin: 3px;
+}
+.favouritesContent .wrapperArrow{
     position: absolute;
     top: 2%;
     left: 1%;
@@ -48,11 +57,55 @@
     width: 100%;
     padding:20px;
 }
+.favourites-icon  a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0%;
+    left: 10%;
+    font-size: 1.2em;
+    transform: translate(-10%, 50%);
+    display: none;
+}
+.favourites-icon > img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    margin: 2px;
+}
+.favourites-icon .deleteSpan{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -15%;
+    right: 0%;
+    font-size: 1.2em;
+    transform: translate(10%, 50%);
+    cursor: pointer;
+    display: none;
+
+}
+.favourites-icon:hover{
+    background-color: darkgray;
+    transform: scale(1.03);
+    border-radius:10px}
+.favourites-icon:hover a{
+    display: block;
+    color: blue;}
+.favourites-icon:hover .deleteSpan{
+    display: block;
+    color: white;
+    }
 @media screen and (max-width: 824px){
-    .icon-main a {
+    .favourites-icon > a {
         font-size: 0.7em;
     }
-    .icon-main .star{
+    .favourites-icon .deleteSpan{
         font-size: 0.7em;
     }
 

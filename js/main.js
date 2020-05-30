@@ -71,19 +71,25 @@ async function searchIconsValues() {
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
             document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
             <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
-            <span class="star" onclick="setLocalStorage()"><i class="fas fa-star"></span></i></div>`
+            <span class="star"><i class="fas fa-star"></span></i></div>`
         }
     }
     catch(err){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${iconValue}`;
         console.log(err);
     }
+    const allSpans=document.querySelectorAll('.star');
+        allSpans.forEach(span=>{
+            span.addEventListener('click', setLocalStorage);
+        })
 }
 }
 //CLEARING FUNCTION ON HOME
 function showOnlyHome(){
     mainContent.style.left="-100%"
     document.querySelector('.mainNav__list').classList.remove('nav-active');
+    document.querySelector('.favouritesContent').style.left="-50%";
+    document.querySelector('.burger').style.transform="rotate(180deg)";
 }
 //DECLARE FUNCTION THAT WILL RETURN RANDOM ICONS
 async function searchRandomIcons(arrs){
@@ -107,6 +113,7 @@ async function searchRandomIcons(arrs){
 async function searchRandomIconsValues(){
     setTimeout(function(){
         document.querySelector('.mainNav__list').classList.remove('nav-active');
+        document.querySelector('.burger').style.transform="rotate(180deg)";
     },2000);
     document.querySelector('.mainContent__icons').innerHTML=""
     let randomNumber=Math.floor(Math.random()*(9-0)+0);
@@ -122,27 +129,105 @@ async function searchRandomIconsValues(){
             const href=`https://www.iconfinder.com/icons/${data.icons[i].icon_id}/download/png/512`
             document.querySelector('.mainContent__icons').innerHTML+=`<div class="icon-main">
             <img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"><a href="${href}"><i class="fas fa-save"></i></a>
-             <span class="star" onclick="setLocalStorage()"><i class="fas fa-star"></span></i></div>`
+             <span class="star"><i class="fas fa-star"></span></i></div>`
         }
     }
     catch(err){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${arrRandom}`;
         console.log(err);
     }
-    document.querySelector('.star').addEventListener('click', setLocalStorage(e));
+    const allSpans=document.querySelectorAll('.star');
+        allSpans.forEach(span=>{
+            span.addEventListener('click', setLocalStorage);
+        })
+}
+//ADDING ICON TO FAVOURITES
+function setLocalStorage(e){
+    let parent=this.parentElement;
+    let icons;
+        if(localStorage.getItem("icons")===null){
+            icons=[];
+        }
+        else{
+        icons=JSON.parse(localStorage.getItem("icons"))
+        }
+        icons.push(parent.innerHTML);
+        localStorage.setItem("icons", JSON.stringify(icons));
+        showLocalStorage();
+}
+//SHOW ICON IN FAVOURITES
+function showLocalStorage(){
+    let icons;
+        if(localStorage.getItem("icons")<1){
+            icons=[];
+            return
+        }
+        else{
+        icons=JSON.parse(localStorage.getItem("icons"));
+        icons.forEach(function(icon){
+
+            document.querySelector('.favourites__icons').innerHTML+=`<div class="favourites-icon">${icon}</div>`;
+            const delStar=document.querySelectorAll('.favourites-icon')
+            delStar.forEach(star=>{
+            star.lastChild.remove();
+            const deleteSpan=document.createElement('span');
+            deleteSpan.classList.add('deleteSpan')
+            deleteSpan.innerHTML=`<i class="fas fa-times"></i>`;
+            star.appendChild(deleteSpan);
+            })
+            let deleteIcons=document.querySelectorAll('.deleteSpan');
+            deleteIcons.forEach(del =>{
+            del.addEventListener('click', deleteIcon);
+        })
+        })};
+
+}
+showLocalStorage();
+//Showing favourites form menu
+function showFavourites(){
+    document.querySelector('.favouritesContent').style.left="50%";
+    document.querySelector('.mainContent').style.left="-100%";
+    setTimeout(function(){
+        document.querySelector('.mainNav__list').classList.remove('nav-active');
+    },2000);
+    document.querySelector('.burger').style.transform="rotate(180deg)";
+}
+//hiding favourites
+function hideFavourites(){
+    document.querySelector('.favouritesContent').style.left="-50%"
+}
+//Delete favourite icon
+function deleteIcon(){
+    deleteElement=this.parentElement;
+    console.log(deleteElement);
+    removeIcon(deleteIcon);
+    deleteElement.style.transform="scale(0)";
+    deleteElement.addEventListener('transitionend', function(){
+        deleteElement.remove();
+    })
+
 }
 
-function setLocalStorage(e){
-    const target=e.target;
-    const item=target.parentElement;
-    console.log(item)
+function removeIcon(icon){
+    if(localStorage.getItem("icons")===null){
+        icons=[];
+    }
+    else{
+        icons=JSON.parse(localStorage.getItem("icons"));
+    }
+    const iconRemove=icon;
+    icons.splice(icons.indexOf(iconRemove),1);
+    localStorage.setItem("icons", JSON.stringify(icons));
+
 }
 ///event Listeners
+
 random.addEventListener('click', searchRandomIconsValues);
 home.addEventListener('click', showOnlyHome);
 mainContentHeader.addEventListener('click', () =>{ mainContent.style.left="-100%";});
 document.querySelector('.iconValue').addEventListener('keyup', e => e.keyCode===13 && searchIconsValues());
 document.querySelector('.mainForm__button').addEventListener('click', searchIconsValues);
+document.querySelector('.favourites__header .wrapperArrow').addEventListener('click', hideFavourites);
+favourites.addEventListener('click', showFavourites);
 
 
-// document.querySelector('.mainContent__icons').innerHTML+=`<a href="https://www.iconfinder.com/icons/${data.icons[i].icon_id}" class="icon-main__href"><img src="${data.icons[i].raster_sizes[4].formats[0].preview_url}"></a>`
