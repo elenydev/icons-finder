@@ -222,12 +222,13 @@ function removeIcon(icon){
 }
 ///event Listeners
 
+favourites.addEventListener('click', showFavourites);
 random.addEventListener('click', searchRandomIconsValues);
 home.addEventListener('click', showOnlyHome);
 mainContentHeader.addEventListener('click', () =>{ mainContent.style.left="-100%";});
-document.querySelector('.iconValue').addEventListener('keyup', e => e.keyCode===13 && searchIconsValues());
+document.querySelector('.numberOfIcons').addEventListener('keyup', e => e.keyCode===13 && searchIconsValues());
 document.querySelector('.mainForm__button').addEventListener('click', searchIconsValues);
 document.querySelector('.favourites__header .wrapperArrow').addEventListener('click', hideFavourites);
-favourites.addEventListener('click', showFavourites);
+document.querySelector('.mainNav__logo').addEventListener('click', showOnlyHome);
 
 
