@@ -140,6 +140,7 @@ async function searchRandomIconsValues(){
         allSpans.forEach(span=>{
             span.addEventListener('click', setLocalStorage);
         })
+    document.querySelector('.favouritesContent').style.left="-50%";
 }
 //ADDING ICON TO FAVOURITES
 function setLocalStorage(e){
@@ -153,8 +154,20 @@ function setLocalStorage(e){
         }
         icons.push(parent.innerHTML);
         localStorage.setItem("icons", JSON.stringify(icons));
-        showLocalStorage();
-}
+        icons=JSON.parse(localStorage.getItem("icons"));
+        document.querySelector('.favourites__icons').innerHTML+=`<div class="favourites-icon">${icons[icons.length-1]}</div>`;
+            const delStar=document.querySelectorAll('.favourites-icon')
+            delStar.forEach(star=>{
+            star.lastChild.remove();
+            const deleteSpan=document.createElement('span');
+            deleteSpan.classList.add('deleteSpan')
+            deleteSpan.innerHTML=`<i class="fas fa-times"></i>`;
+            star.appendChild(deleteSpan);
+            });
+            let deleteIcons=document.querySelectorAll('.deleteSpan');
+            deleteIcons.forEach(del =>{
+            del.addEventListener('click', deleteIcon);
+})}
 //SHOW ICON IN FAVOURITES
 function showLocalStorage(){
     let icons;
@@ -165,20 +178,19 @@ function showLocalStorage(){
         else{
         icons=JSON.parse(localStorage.getItem("icons"));
         icons.forEach(function(icon){
-
             document.querySelector('.favourites__icons').innerHTML+=`<div class="favourites-icon">${icon}</div>`;
-            const delStar=document.querySelectorAll('.favourites-icon')
-            delStar.forEach(star=>{
-            star.lastChild.remove();
-            const deleteSpan=document.createElement('span');
-            deleteSpan.classList.add('deleteSpan')
-            deleteSpan.innerHTML=`<i class="fas fa-times"></i>`;
-            star.appendChild(deleteSpan);
+                const delStar=document.querySelectorAll('.favourites-icon')
+                delStar.forEach(star=>{
+                star.lastChild.remove();
+                const deleteSpan=document.createElement('span');
+                deleteSpan.classList.add('deleteSpan')
+                deleteSpan.innerHTML=`<i class="fas fa-times"></i>`;
+                star.appendChild(deleteSpan);
+                })
+                let deleteIcons=document.querySelectorAll('.deleteSpan');
+                deleteIcons.forEach(del =>{
+                del.addEventListener('click', deleteIcon);
             })
-            let deleteIcons=document.querySelectorAll('.deleteSpan');
-            deleteIcons.forEach(del =>{
-            del.addEventListener('click', deleteIcon);
-        })
         })};
 
 }
@@ -204,8 +216,7 @@ function deleteIcon(){
     deleteElement.style.transform="scale(0)";
     deleteElement.addEventListener('transitionend', function(){
         deleteElement.remove();
-    })
-
+    });
 }
 
 function removeIcon(icon){
@@ -220,6 +231,7 @@ function removeIcon(icon){
     localStorage.setItem("icons", JSON.stringify(icons));
 
 }
+
 ///event Listeners
 
 favourites.addEventListener('click', showFavourites);
