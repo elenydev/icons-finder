@@ -1,7 +1,7 @@
 .search{
     display: flex;
     // border: 2px solid black;
-    width: 100%;
+    width: 43%;
     height: 40%;
     flex-wrap: wrap;
     align-items: center;
@@ -74,7 +74,7 @@
 }
 @media screen and (max-width:824px){
     .search{
-        width: 100%;
+        width: 50%;
     }
     .mainForm__header{
         font-size: 3em;
