@@ -50,7 +50,7 @@ async function searchIcons(icons,counts){
 async function searchIconsValues() {
     document.querySelector('.mainContent__icons').innerHTML=""
     const iconValue=document.querySelector('.iconValue').value;
-    const numberOfIcons=document.querySelector('.numberOfIcons').value;
+    const numberOfIcons=parseInt(document.querySelector('.numberOfIcons').value);
     const h3=document.querySelector('.h3Alert');
     if(iconValue==="" || numberOfIcons<=0 || numberOfIcons>100){
         document.querySelector('.numberOfIcons').style.borderBottom="2px solid red";
@@ -105,7 +105,7 @@ async function searchRandomIcons(arrs){
     return response;
     }
     catch(err){
-        console.log("Ooops, Something went Wrong");
+        alert("Ooops, Something went Wrong");
     }
 
 }
