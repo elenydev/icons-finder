@@ -43,7 +43,7 @@ async function searchIcons(icons,counts){
     return response;
     }
     catch(err){
-        alert('Oops, something went wrong :( ')
+        alert('Oops, something went wrong :( Try again later :)')
     }
 }
 ///Looking for ICON,NUMBER OF ICONS
@@ -106,7 +106,7 @@ async function searchRandomIcons(arrs){
     return response;
     }
     catch(err){
-        alert("Ooops, Something went Wrong");
+        alert("Ooops, Something went Wrong :( try again later :)");
     }
 
 }
@@ -135,7 +135,7 @@ async function searchRandomIconsValues(){
     }
     catch(err){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${arrRandom}`;
-        console.log(err);
+        
     }
     const allSpans=document.querySelectorAll('.star');
         allSpans.forEach(span=>{
