@@ -43,14 +43,15 @@ async function searchIcons(icons,counts){
     return response;
     }
     catch(err){
-        console.log("Ooops, Something went Wrong");
+        alert('Oops, something went wrong :( ')
     }
 }
 ///Looking for ICON,NUMBER OF ICONS
 async function searchIconsValues() {
     document.querySelector('.mainContent__icons').innerHTML=""
     const iconValue=document.querySelector('.iconValue').value;
-    const numberOfIcons=parseInt(document.querySelector('.numberOfIcons').value);
+    const IconsNumber=document.querySelector('.numberOfIcons').value;
+    const numberOfIcons=parseInt(IconsNumber);
     const h3=document.querySelector('.h3Alert');
     if(iconValue==="" || numberOfIcons<=0 || numberOfIcons>100){
         document.querySelector('.numberOfIcons').style.borderBottom="2px solid red";
@@ -76,7 +77,7 @@ async function searchIconsValues() {
     }
     catch(err){
         mainContentHeader.innerHTML=`<i class="fas fa-arrow-left wrapperArrow" ><div class="deleteResult"></div></i>Results for: ${iconValue}`;
-        console.log(err);
+        
     }
     const allSpans=document.querySelectorAll('.star');
         allSpans.forEach(span=>{
